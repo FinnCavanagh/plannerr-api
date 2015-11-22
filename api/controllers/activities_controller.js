@@ -1,1 +1,1 @@
-var Activity   = require('../models/activity');
+var Activity = require('../models/activity');
