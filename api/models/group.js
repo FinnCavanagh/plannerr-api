@@ -9,7 +9,7 @@ module.exports = mongoose.model('Group',{
   image: String,
   admin_users: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
   activities: [activity.Schema],
-  users: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
+  users: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
 });
 
-module.exports = mongoose.model("Group", userSchema);
+module.exports = mongoose.model("Group", groupSchema);
