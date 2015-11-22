@@ -11,4 +11,7 @@ module.exports = mongoose.model('User',{
   },
   image: String,
   header_image: String,
+  groups: [{type: mongoose.Schema.ObjectId, ref: 'Group'}],
 });
+
+module.exports = mongoose.model("User", userSchema);
