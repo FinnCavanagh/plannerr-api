@@ -15,6 +15,7 @@ function loggedInState(){
 function loggedOutState(){
 //set view for logged out
 }
+
 function showPage() {
 //user profile and activity feed, show all user groups
 }
@@ -47,6 +48,18 @@ function displayGroup(data){
 //to show current group
 }
 
+function voteOnActivity(){
+//user vote on activity
+}
+
+function commentOn(){
+//add comment to activity
+}
+
+function instantMessage(){
+//trigger instant message app
+}
+
 function displayErrors(data){
 
 }
@@ -56,7 +69,7 @@ function authenticationSuccessful(data) {
 }
 
 function setRequestHeader(xhr, settings) {
-//for the token
+//for the token so we can see things that require a token
 }
 
 function ajaxRequest(method, url, data, callback) {
