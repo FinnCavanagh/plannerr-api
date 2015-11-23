@@ -15,6 +15,8 @@ var app            = express();
 
 var config         = require('./config/config');
 var User           = require('./models/user');
+var Group          = require('./models/group');
+var Activity       = require('./models/activity');
 
 //This will connect to the db when we figure out the location
 //mongoose.connect(config.database);
@@ -37,7 +39,7 @@ app.use(passport.initialize());
 
 //this will require the routes when they exist, enabling this will result in a callback error
 var routes = require('./config/routes');
-// app.use("/api", routes);
+app.use("/api", routes);
 
 app.listen(3000);
 console.log("listening");
