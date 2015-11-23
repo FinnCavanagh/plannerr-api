@@ -22,4 +22,14 @@ router.route('/users/:id')
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete)
 
+router.route('/groups')
+  .get(groupsController.groupsIndex)
+  .post(groupsController.groupsCreate)
+
+router.route('/groups/:id')
+  .get(groupsController.groupsShow)
+  .put(groupsController.groupsUpdate)
+  .patch(groupsController.groupsUpdate)
+  .delete(groupsController.groupsDelete)
+
 module.exports = router
