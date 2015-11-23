@@ -18,9 +18,6 @@ function usersUpdate(req, res){
     if (err) return res.status(500).json({message: "Something went wrong!"});
     if (!user) return res.status(404).json({message: 'No user found.'});
 
-    if (req.body.email) user.fb.email = req.body.name;
-    if (req.body.password) user.fb.password = req.body.password;
-
     user.save(function(err) {
      if (err) return res.status(500).json({message: "Something went wrong!"});
 
@@ -29,11 +26,16 @@ function usersUpdate(req, res){
   });
 }
 
-//add remove user?
+function usersDelete(req, res){
+  User.findByIdAndRemove({_id: req.params.id}, function(err){
+   if (err) return res.status(404).json({message: 'Something went wrong.'});
+   res.status(200).json({message: 'User has been successfully deleted'});
+  });
+}
 
 module.exports = {
   usersIndex:  usersIndex,
   usersShow:   usersShow,
   usersUpdate: usersUpdate,
-  // usersDelete: usersDelete
+  usersDelete: usersDelete
 }
