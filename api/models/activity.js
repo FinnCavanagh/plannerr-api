@@ -7,11 +7,13 @@ var activitySchema = new mongoose.Schema({
   pitch: String,
   image: String,
   votes_count: Array,
-  // yelp API
-  // location: //?
+  place_id: String,
   url: String,
   // rating: //?
   user_id: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
 });
 
 module.exports = mongoose.model("Activity", activitySchema);
+
+//store id on model using ajax
+//call id to front end to view place info
