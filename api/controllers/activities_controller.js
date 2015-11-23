@@ -7,7 +7,9 @@ var Activity = require('../models/activity');
 //      res.send(post)
 //   }
 // )
+
 // // or list of posts
+
 // Post.find(function(err, posts){
 //      posts.forEach(function(post){
 //          post.vote = post.votes.filter(function(vote){
@@ -24,3 +26,14 @@ var Activity = require('../models/activity');
 //     })[0]
 //     if(vote) return vote.type;
 // }
+
+// to find the latest votes of a particular user:
+
+// Post.find({'votes.user_id': req.body.userID}, function(err, posts){
+//      posts.forEach(function(post){
+//          // using findVote defined above
+//          post.vote = findVote(post);
+//      });
+//      res.send(posts)
+//   }
+// )
