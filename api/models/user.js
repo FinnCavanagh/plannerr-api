@@ -6,10 +6,10 @@ var userSchema = new mongoose.Schema({
   access_token: String,
   first_name: String,
   last_name: String,
-  email: String
-  profile_image: String,
+  email: String,
+  profile_picture: String,
   header_image: String,
-  groups: [{type: mongoose.Schema.ObjectId, ref: 'Group'}],
+  groups: [{type: mongoose.Schema.ObjectId, ref: 'Group'}]
 });
 
 module.exports = mongoose.model("User", userSchema);

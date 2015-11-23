@@ -31,10 +31,33 @@ $(function(){
 
   function checkLoginStatus(res) {
     if(res.status === 'connected') {
+      
+        
+      var access_token = res.authResponse.accessToken;
+      var facebook_id = res.authResponse.userID;
+      
+      FB.api('/me?fields=email,first_name,last_name,picture,friends', function(res) {
+        console.info("FB callback", res);
+
+        var data = res;
+
+        data.access_token = access_token;
+        data.facebook_id = facebook_id;
+        data.profile_picture = res.picture.data.url;
+
+        $.post('http://localhost:3000/api/auth/facebook', data)
+          .then(function(res) {
+            // TODO: put token in AJAX request header
+            console.log(res);
+          });
+
+      });
       $('.fb-logout').removeClass('hidden');
       $('.fb-login').addClass('hidden');
     }
     else {
+
+      // TODO: remove token from AJAX request header
       $('.fb-logout').addClass('hidden');
       $('.fb-login').removeClass('hidden');
     }
