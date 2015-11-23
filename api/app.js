@@ -9,6 +9,7 @@ var mongoose       = require('mongoose');
 var passport       = require('passport');
 var cookieParser   = require("cookie-parser");
 var methodOverride = require("method-override");
+var MongooseVoting = require('mongoose-voting');
 var jwt            = require('jsonwebtoken');
 var expressJWT     = require('express-jwt');
 var app            = express();
