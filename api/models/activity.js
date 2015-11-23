@@ -9,7 +9,6 @@ var activitySchema = new mongoose.Schema({
   votes_count: Array,
   place_id: String,
   url: String,
-  // rating: //?
   user_id: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
 });
 
