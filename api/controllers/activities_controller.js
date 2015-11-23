@@ -51,6 +51,13 @@ function activitiesDelete(req, res){
   });
 }
 
+module.exports = {
+  activitiesIndex:  activitiesIndex,
+  activitiesShow:   activitiesShow,
+  activitiesCreate: activitiesCreate,
+  activitiesUpdate: activitiesUpdate,
+  activitiesDelete: activitiesDelete
+}
 // Post.findOne({_id:<post-id>)}, function(err, post){
 //      post.vote = post.votes.filter(function(vote){
 //          return vote.user_id === req.body.userID;

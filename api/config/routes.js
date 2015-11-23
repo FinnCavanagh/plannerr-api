@@ -32,4 +32,14 @@ router.route('/groups/:id')
   .patch(groupsController.groupsUpdate)
   .delete(groupsController.groupsDelete)
 
+  router.route('/activities')
+    .get(activitiesController.activitiesIndex)
+    .post(activitiesController.activitiesCreate)
+
+  router.route('/activities/:id')
+    .get(activitiesController.activitiesShow)
+    .put(activitiesController.activitiesUpdate)
+    .patch(activitiesController.activitiesUpdate)
+    .delete(activitiesController.activitiesDelete)
+
 module.exports = router
