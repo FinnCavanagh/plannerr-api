@@ -13,3 +13,13 @@ var authenticationsController = require('../controllers/authentications_controll
 // router.post('/register', authenticationsController.register);
 
 //routes required for application
+router.route('/users')
+  .get(usersController.usersIndex)
+
+router.route('/users/:id')
+  .get(usersController.usersShow)
+  .put(usersController.usersUpdate)
+  .patch(usersController.usersUpdate)
+  .delete(usersController.usersDelete)
+
+module.exports = router
