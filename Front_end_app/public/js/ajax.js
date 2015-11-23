@@ -16,7 +16,16 @@ function loggedOutState(){
 //set view for logged out
 }
 
-function showPage() {
+function getGroups(){
+  return ajaxRequest("get", "localhost:3000/api/groups", null, displayGroup)
+  return $.each(data.groups, function(/place we will have the group page/, group){
+    //chuck in the group stuff
+    getActivities()
+  })
+//get users current groups
+}
+
+function showUsersGroups() {
 //user profile and activity feed, show all user groups
 }
 
@@ -40,11 +49,10 @@ function displayUsers(data){
 //to show friends list
 }
 
-function getGroup(){
-//get users current group
-}
+
 
 function displayGroup(data){
+
 //to show current group
 }
 
@@ -61,7 +69,7 @@ function instantMessage(){
 }
 
 function displayErrors(data){
-
+//show any errors that come up on the app
 }
 
 function authenticationSuccessful(data) {
