@@ -31,6 +31,26 @@ function activitiesCreate(req, res){
   });
 }
 
+function activitiesUpdate(req, res){
+  Activity.findById(req.params.id,  function(err, activity) {
+    if (err) return res.status(500).json({message: "Something went wrong!"});
+    if (!activity) return res.status(404).json({message: 'No activity found.'});
+
+    activity.save(function(err) {
+     if (err) return res.status(500).json({message: "Something went wrong!"});
+
+      res.status(201).json({message: 'Activity successfully updated.', activity: activity});
+    });
+  });
+}
+
+function activitiesDelete(req, res){
+  Activity.findByIdAndRemove({_id: req.params.id}, function(err){
+   if (err) return res.status(404).json({message: 'Something went wrong.'});
+   res.status(200).json({message: 'Activity has been successfully deleted'});
+  });
+}
+
 // Post.findOne({_id:<post-id>)}, function(err, post){
 //      post.vote = post.votes.filter(function(vote){
 //          return vote.user_id === req.body.userID;
