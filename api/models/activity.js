@@ -7,6 +7,7 @@ var activitySchema = new mongoose.Schema({
   pitch: String,
   image: String,
   votes_count: Array,
+  votes: [{ user_id : mongoose.Schema.Types.ObjectId , type: Number }],
   // yelp API
   // location: //?
   url: String,
