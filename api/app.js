@@ -20,7 +20,8 @@ var Group          = require('./models/group');
 var Activity       = require('./models/activity');
 
 //This will connect to the db when we figure out the location
-//mongoose.connect(config.database);
+mongoose.connect('mongodb://localhost:27017/plannerr-app');
+
 
 //This will require the passport file
 // require('./config/passport')(passport);
