@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var bcrypt   = require('bcrypt-nodejs');
 
-module.exports = mongoose.model('User',{
+var userSchema = new mongoose.Schema({
   fb: {
     id: String,
     access_token: String,

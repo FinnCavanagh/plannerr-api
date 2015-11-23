@@ -19,7 +19,8 @@ var User           = require('./models/user');
 //This will connect to the db when we figure out the location
 //mongoose.connect(config.database);
 
-require('./config/passport')(passport);
+//This will require the passport file
+// require('./config/passport')(passport);
 
 app.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -34,7 +35,13 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(passport.initialize());
 
+//this will require the routes when they exist, enabling this will result in a callback error
 var routes = require('./config/routes');
-app.use("/api", routes);
+// app.use("/api", routes);
 
 app.listen(3000);
+console.log("listening");
+
+app.get('/', function(req, res){
+  res.send('looks like I can talk to the client');
+});

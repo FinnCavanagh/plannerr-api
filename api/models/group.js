@@ -1,14 +1,13 @@
 var mongoose = require("mongoose");
-var activitiy   = require('./activity');
+var activity   = require('./activity');
 
-module.exports = mongoose.model('Group',{
-  
+var groupSchema = new mongoose.Schema({
   name: String,
   activity_duration: String,
   decision_expiry_time: Date,
   image: String,
   admin_users: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
-  activities: [activity.Schema],
+  activities: [activity.schema],
   users: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
 });
 
