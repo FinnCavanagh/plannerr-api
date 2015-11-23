@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var activitySchema = new mongoose.Schema({
   activity_name: String,
   activity_type: String,
-  pitch: Date,
+  pitch: String,
   image: String,
   votes_count: Array,
   // yelp API
