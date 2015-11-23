@@ -2,8 +2,49 @@
 <html>
 <head>
   <title>Plannerr Apps</title>
+    <!-- Compiled and minified CSS for Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <!-- Our own css link -->
+    <link rel="stylesheet" type="text/css" href="./public/css/style.css">
+    <!-- JQUery CDN link from google -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript for Materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 </head>
 <body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">PlannErr</a>
+      <ul id="slide-out" class="side-nav">
+        <!-- sidebar nav links -->
 
+        <li><a href="#!">Login</a></li>
+        <li><a href="#!">Sign up</a></li>
+
+        <li><a href="#!">Sign Out</a></li>
+        <li><a href="#!">Add New Event</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+
+  <section id="main">
+    <div class="container">
+      <!-- Page Content goes here -->
+      <h1>more stuff to go here and below i.e. facebook login</h1>
+    </div>
+  </section>
+  
+
+
+
+  <script type="text/javascript">
+    $('.button-collapse').sideNav({
+          menuWidth: 300, // Default is 240
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        }
+      );
+  </script>
 </body>
 </html>
