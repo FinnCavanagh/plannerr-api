@@ -28,7 +28,7 @@ router.route('/users/:id')
 
 router.route('/groups')
   .get(groupsController.groupsIndex)
-  .post(groupsController.groupsCreate)
+  .post(groupsController.groupsCreate);
 
 router.route('/groups/:id')
   .get(groupsController.groupsShow)

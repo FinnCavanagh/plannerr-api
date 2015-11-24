@@ -4,6 +4,7 @@ var currentUser = null;
 
 function init(){
   console.log(localStorage);
+  $("form").on("submit", submitGroupForm);
 
 
 // checkLoginState(); 
@@ -66,8 +67,19 @@ function showUsersGroups(data) {
   // show all user groups using underscore rendering
 }
 
-function submitForm(){
-//post or put a form
+function submitGroupForm(){
+    event.preventDefault();
+
+    var method = $(this).attr("method");
+    var url    = "http://localhost:3000/api" + $(this).attr("action");
+    var data   = $(this).serialize();
+
+
+    return ajaxRequest(method, url, data, authenticationSuccessful);
+  }
+
+function submitActivityForm(){
+
 }
 
 function getAppFriends(){
@@ -155,7 +167,6 @@ function removeToken() {
 }
 
 function ajaxRequest(method, url, data, callback) {
-  console.log("ajaxRequest called");
   return $.ajax({
     method: method,
     url: url,

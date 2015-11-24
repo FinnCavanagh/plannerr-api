@@ -18,7 +18,7 @@ function groupsCreate(req, res){
   var group = new Group({
     name: req.body.name,
     activity_duration: req.body.activity_duration,
-    // decision_expiry_time: req.body.decision_expiry_time,
+    decision_expiry_time: req.body.decision_expiry_time,
     image: req.body.image,
     admin_users: req.body.admin_users,
     users: req.body.users
@@ -27,7 +27,6 @@ function groupsCreate(req, res){
     if(err) return res.render('error', {message: 'Could not create group ' + (err) });
     res.status(201).json({ group: group });
   });
-
 };
 
 
