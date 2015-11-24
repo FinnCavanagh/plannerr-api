@@ -16,3 +16,37 @@ body {
 .hidden {
   display: none;
 }
+
+
+
+
+
+
+
+/*ben added for user page*/
+#topbar {
+  background-color: #2ecc71;
+}
+
+#bottombar {
+  background-color: #2ecc71;
+}
+
+#copyright {
+  background-color: #2ecc71;
+}
+
+.input-field col s12{
+   color: #000;
+ }
+
+ body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+    
