@@ -41,6 +41,14 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 app.use(cors());
 
+//do we need this to have secrets?
+// app.use('/api', expressJWT({ secret: secret })
+//   .unless({
+//     path: [
+//       { url: '/api/auth/facebook', methods: ['POST'] },
+//       { url: '/api/', methods: ['POST'] },
+//     ]
+//   }));
 //this will require the routes when they exist, enabling this will result in a callback error
 var routes = require('./config/routes');
 app.use("/api", routes);

@@ -18,6 +18,8 @@ function usersUpdate(req, res){
     if (err) return res.status(500).json({message: "Something went wrong!"});
     if (!user) return res.status(404).json({message: 'No user found.'});
 
+    if (req.body.groups) user.groups = req.body.groups;
+
     user.save(function(err) {
      if (err) return res.status(500).json({message: "Something went wrong!"});
 
