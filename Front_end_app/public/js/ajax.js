@@ -75,8 +75,18 @@ function submitGroupForm(){
     var data   = $(this).serialize();
 
 
-    return ajaxRequest(method, url, data, authenticationSuccessful);
-  }
+
+    ajaxRequest(method, url, data, shoveGroupIdIntoUser);
+    console.log(data);
+    console.log(currentUser.groups);
+    currentUser.groups.push(data._id);
+    console.log(currentUser.groups);
+}
+
+function shoveGroupIdIntoUser(data){
+console.log("I am in shoveGroup so on so forth", data);
+
+}
 
 function submitActivityForm(){
 
