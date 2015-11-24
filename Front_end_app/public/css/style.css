@@ -49,4 +49,8 @@ body {
  main {
    flex: 1 0 auto;
  }
+
+ footer.page-footer {
+  background-color: #2ecc71;
+ }
     
