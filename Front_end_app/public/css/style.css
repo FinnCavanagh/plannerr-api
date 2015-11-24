@@ -16,3 +16,8 @@ body {
 .hidden {
   display: none;
 }
+
+.circle > .responsive-img > img {
+  height: 100px;
+}
+

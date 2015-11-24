@@ -8,6 +8,10 @@
   <script>
     $(document).ready(function() {
       $('select').material_select();
+      $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 1 // Creates a dropdown of 15 years to control year
+        });
     });
   </script>
 </head>
@@ -17,27 +21,33 @@
       <form class="col s6">
         <div class="row">
           <div class="input-field col s12">
-            <input placeholder="" id="first_name" type="text" class="validate">
-            <label for="">Event Name</label>
+            <input name="name" id="first_name" type="text" class="validate">
+            <label for="name">Event Name</label>
           </div>
           <div class="input-field col s12">
-            <input id="" type="text" class="validate">
-            <label for="">Add Place</label>
-          </div>
-          <div class="col s12">
-            <p>or</p>
+            <input name="activity_duration" id="" type="text" class="validate">
+            <label for="activity_duration">Duration of Activity</label>
           </div>
           <div class="input-field col s12">
-            <input id="" type="text" class="validate">
-            <label for="">Venue</label>
+            <!-- <input name="image" id="" type="text" class="validate">
+            <label for="">Add Image</label> -->
+            <form action="#">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Add Image</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input name="image" class="file-path validate" type="text">
+                </div>
+              </div>
+            </form>
           </div>
           <div class="input-field col s12">
-            <input id="" type="text" class="validate">
-            <label for="">Add Image</label>
+            <input name="decision_expiry_time" type="date" class="date-picker"> 
           </div>
           <div class="input-field col s12">
-            
-            <select multiple>
+            <select multiple name="users">
               <option value="" disabled selected>Add Some Friends</option>
               <option value="1">Option 1</option>
               <option value="2">Option 2</option>
