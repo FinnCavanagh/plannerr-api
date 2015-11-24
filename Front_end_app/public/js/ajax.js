@@ -26,6 +26,8 @@ function checkLoginState(){
 function loggedInState(){
   //maybe slap this on the page
   console.log("you logged in");
+  var profile_picture = localStorage.getItem("profile_picture");
+  $('.nav-wrapper img').attr('src', profile_picture);
   getUsersGroups();
 
   // var currentUser = 
@@ -121,7 +123,8 @@ function displayErrors(data){
 
 function authenticationSuccessful(data) {
   currentUser = data.user;
-
+  localStorage.setItem("profile_picture", data.user.profile_picture);
+  localStorage.setItem("first_name", data.user.first_name);
 //set the token
 //data is res
 // console.log("here");
