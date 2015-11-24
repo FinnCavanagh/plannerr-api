@@ -29,7 +29,6 @@ $(function(){
         data.facebook_id = facebook_id;
         data.profile_picture = res.picture.data.url;
 
-        console.log(data);
         // do this with you ajaxRequest function
         // callback function is gonna be authenticationSuccessfull, which will set the token
         return ajaxRequest("POST", 'http://localhost:3000/api/auth/facebook', data, authenticationSuccessful);

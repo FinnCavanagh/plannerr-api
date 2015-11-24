@@ -1,8 +1,10 @@
 $(init);
 
+var currentUser = null;
+
 function init(){
   console.log(localStorage);
-  checkLoginState()
+
 
 // checkLoginState(); 
 //functions to trigger on initialize
@@ -22,24 +24,37 @@ function checkLoginState(){
 //check a token to confirm logged in or out
 
 function loggedInState(){
-  console.log("logged in")
+  //maybe slap this on the page
+  console.log("you logged in");
+  getUsersGroups();
+
+  // var currentUser = 
+
 //set view for logged in
 }
 
 function loggedOutState(){
   console.log("logged out")
+
 //set view for logged out
 }
 
 function getUsersGroups(){
-  return ajaxRequest("get", "localhost:3000/api/groups", null, showUsersGroups)
+  console.log("getUsersGroups user is ", currentUser)
+  groups = currentUser.groups
+  console.log(groups);
+  // return ajaxRequest("get", "http://localhost:3000/api/groups", null, showUsersGroups)
 
 //get users current groups
 }
 
 function showUsersGroups(data) {
+  console.log("users group")
+
   //chuck in the activity and profile stuff
-  // return $.each(data.groups, function(/place we will have the group page/, group){
+  // return $.each(data.groups, function(index, group){
+  //   $.groups
+  // })
   // show all user groups using underscore rendering
 }
 
@@ -73,7 +88,7 @@ function displayUsersInGroup(data){
 
 function getCurrentGroup(){
   return ajaxRequest("get", "http://localhost:3000/api/groups", null, function(){
-    $
+    
   })
 }
 
@@ -105,13 +120,16 @@ function displayErrors(data){
 }
 
 function authenticationSuccessful(data) {
+  currentUser = data.user;
+
 //set the token
 //data is res
-console.log("here");
-// console.log(data.user, " is data.user");
-console.log(data.token + " is data.token");
-console.log(data.access_token + " is data.access_token");
+// console.log("here");
+// // console.log(data.user, " is data.user");
+// console.log(data.token + " is data.token");
+// console.log(data.access_token + " is data.access_token");
 setToken(data.token);
+checkLoginState()
 
 
 
