@@ -2,6 +2,7 @@ $(init);
 
 function init(){
   console.log(localStorage);
+  checkLoginState()
 
 // checkLoginState(); 
 //functions to trigger on initialize
@@ -107,8 +108,14 @@ function authenticationSuccessful(data) {
 //set the token
 //data is res
 console.log("here");
-  setToken(data.token);
-// and set the page state to be "LOGGED IN"
+// console.log(data.user, " is data.user");
+console.log(data.token + " is data.token");
+console.log(data.access_token + " is data.access_token");
+setToken(data.token);
+
+
+
+//and set the page state to be "LOGGED IN"
 
 }
 
@@ -131,12 +138,14 @@ function removeToken() {
 }
 
 function ajaxRequest(method, url, data, callback) {
+  console.log("ajaxRequest called");
   return $.ajax({
     method: method,
     url: url,
     data: data,
     beforeSend: setRequestHeader
   }).done(function(data){
+    console.log("ajaxRequestReturn", data);
     callback(data);
   }).fail(function(data) {
     displayErrors(data.responseJSON.message);
