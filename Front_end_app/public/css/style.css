@@ -37,38 +37,57 @@ body {
 }
 
 .input-field col s12{
-   color: #000;
- }
+ color: #000;
+}
 
- body {
-   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
- }
+body {
+ display: flex;
+ min-height: 100vh;
+ flex-direction: column;
+}
 
- main {
-   flex: 1 0 auto;
- }
+main {
+ flex: 1 0 auto;
+}
 
- footer.page-footer {
+footer.page-footer {
   background-color: #2ecc71;
- }
+}
 
- #righthalf {
-  background-color: #e74c3c;
-  width: 45%;
-  margin-left: 36px;
- }
+#righthalf {
+  background-color: #2ecc71;
+  width: 47%;
+  border-radius: 5px;
+  margin-left: 2%;
+/*  margin-right: 1%;*/
+  height: 200px;
+}
 
- #lefthalf {
-  background-color: #9b59b6;
-  width: 45%;
-  margin-left: 36px;
- }
+#lefthalf {
+  background-color: #2ecc71;
+  width: 47%;
+  border-radius: 5px;
+/*  margin-right: 2%;*/
+  margin-left: 2%;
+  height: 200px;
+}
 
- #middle {
+.tile {
+ position: relative;
+ margin: 5px;
+ color: #303030 ;
+ background-color: #F8F8F8;
+ border-color: 303030;
+ border-radius: 50%;
+ width: 300px;
+ height: 300px; 
+ margin: 0 auto;
+}
 
- }
+p {
+  color: #2ecc71;
+}
+
 
 
 
