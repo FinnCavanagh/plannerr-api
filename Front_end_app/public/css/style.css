@@ -53,4 +53,26 @@ body {
  footer.page-footer {
   background-color: #2ecc71;
  }
-    
+
+ #righthalf {
+  background-color: #e74c3c;
+  width: 45%;
+  margin-left: 36px;
+ }
+
+ #lefthalf {
+  background-color: #9b59b6;
+  width: 45%;
+  margin-left: 36px;
+ }
+
+ #middle {
+
+ }
+
+
+
+
+
+
+
