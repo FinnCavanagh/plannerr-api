@@ -1,6 +1,9 @@
 $(init);
 
 function init(){
+  console.log(localStorage);
+
+// checkLoginState(); 
 //functions to trigger on initialize
 }
 
@@ -16,13 +19,14 @@ function checkLoginState(){
   }
 }
 //check a token to confirm logged in or out
-}
 
 function loggedInState(){
+  console.log("logged in")
 //set view for logged in
 }
 
 function loggedOutState(){
+  console.log("logged out")
 //set view for logged out
 }
 
@@ -34,9 +38,9 @@ function getUsersGroups(){
 
 function showUsersGroups(data) {
   //chuck in the activity and profile stuff
-  return $.each(data.groups, function(/place we will have the group page/, group){
+  // return $.each(data.groups, function(/place we will have the group page/, group){
   // show all user groups using underscore rendering
-})
+}
 
 function submitForm(){
 //post or put a form
@@ -101,10 +105,27 @@ function displayErrors(data){
 
 function authenticationSuccessful(data) {
 //set the token
+  setToken(data.token);
+// and set the page state to be "LOGGED IN"
+
 }
 
 function setRequestHeader(xhr, settings) {
 //for the token so we can see things that require a token
+  var token = getToken();
+  if(token) xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+}
+
+function setToken(token) {
+  return localStorage.setItem("token", token)
+}
+
+function getToken() {
+  return localStorage.getItem("token");
+}
+
+function removeToken() {
+  localStorage.clear();
 }
 
 function ajaxRequest(method, url, data, callback) {
@@ -112,7 +133,7 @@ function ajaxRequest(method, url, data, callback) {
     method: method,
     url: url,
     data: data,
-    beforeSend: setRequestHeader,
+    beforeSend: setRequestHeader
   }).done(function(data){
     callback(data);
   }).fail(function(data) {
