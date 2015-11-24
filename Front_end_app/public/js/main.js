@@ -1,0 +1,77 @@
+
+$(function(){
+
+  // Facebook login
+  var $fbLogin = $('.fb-login');
+  var $fbLogout = $('.fb-logout');
+
+  // initialize facebook 
+  FB.init({
+    appId      : '1389788894661209', //process.env.PLANNERR_FACEBOOK_API_KEY,
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  function checkLoginStatus(res) {
+    if(res.status === 'connected') {
+      
+        
+      var access_token = res.authResponse.accessToken;
+      var facebook_id = res.authResponse.userID;
+      
+      FB.api('/me?fields=email,first_name,last_name,picture,friends', function(res) {
+        console.info("FB callback", res);
+
+        var data = res;
+
+        data.access_token = access_token;
+        data.facebook_id = facebook_id;
+        data.profile_picture = res.picture.data.url;
+
+        $.post('http://localhost:3000/api/auth/facebook', data)
+          .then(function(res) {
+            // TODO: put token in AJAX request header
+            console.log(res);
+          });
+
+      });
+      $('.fb-logout').removeClass('hidden');
+      $('.fb-login').addClass('hidden');
+    }
+    else {
+
+      // TODO: remove token from AJAX request header
+      $('.fb-logout').addClass('hidden');
+      $('.fb-login').removeClass('hidden');
+    }
+
+  }
+
+  // start frontend login for facebook
+  FB.getLoginStatus(function(res) {
+    checkLoginStatus(res);
+  });
+
+  $fbLogin.on('click', function() {
+    event.preventDefault();
+    FB.login(function(res) {
+      checkLoginStatus(res);
+    }, { scope: 'public_profile,email,user_friends' });
+  })
+
+  $fbLogout.on('click', function() {
+    event.preventDefault();
+    FB.logout(function(res) {
+      checkLoginStatus(res);
+    });
+  });
+  // end frontend login for facebook
+
+});
+
+
+
+
+

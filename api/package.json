@@ -18,9 +18,11 @@
     "jsonwebtoken": "^5.0.5",
     "method-override": "^1.0.2",
     "mongoose": "4.1.1",
+    "mongoose-voting": "^0.2.0",
     "morgan": "~1.0.0",
     "passport": "^0.2.0",
+    "passport-facebook": "^2.0.0",
     "passport-local": "~0.1.6",
-    "passport-facebook": "^2.0.0"
+    "request": "^2.67.0"
   }
 }

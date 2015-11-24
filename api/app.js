@@ -34,10 +34,12 @@ app.use(methodOverride(function(req, res){
   }
 }));
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(passport.initialize());
+app.use(cors());
 
 //this will require the routes when they exist, enabling this will result in a callback error
 var routes = require('./config/routes');
