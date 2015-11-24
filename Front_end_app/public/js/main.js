@@ -16,7 +16,6 @@ $(function(){
 
   function checkLoginStatus(res) {
     if(res.status === 'connected') {
-      
         
       var access_token = res.authResponse.accessToken;
       var facebook_id = res.authResponse.userID;
@@ -33,7 +32,7 @@ $(function(){
 
         // do this with you ajaxRequest function
         // callback function is gonna be authenticationSuccessfull, which will set the token
-        ajaxRequest("POST", 'http://localhost:3000/api/auth/facebook', data, authenticationSuccessful);
+        ajaxRequest("POST", 'http://localhost:3000/api/auth/facebook', data, authenticationSuccessful());
         // $.post('http://localhost:3000/api/auth/facebook', data)
         //   .then(function(res) {
         //     // TODO: put token in AJAX request header

@@ -105,6 +105,8 @@ function displayErrors(data){
 
 function authenticationSuccessful(data) {
 //set the token
+//data is res
+console.log("here");
   setToken(data.token);
 // and set the page state to be "LOGGED IN"
 
