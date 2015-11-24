@@ -9,6 +9,10 @@ var authenticationsController = require('../controllers/authentications_controll
 
 //routes for authenticating login and register with tokens
 
+// set up the facebook auth route
+router.route('/auth/facebook')
+  .post(authenticationsController.facebook);
+
 // router.post('/login', authenticationsController.login);
 // router.post('/register', authenticationsController.register);
 
