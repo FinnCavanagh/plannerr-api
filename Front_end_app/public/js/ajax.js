@@ -49,7 +49,23 @@ function onGroupCreate(){
 function getUsersGroups(){
   console.log("getUsersGroups user is ", currentUser)
   groups = currentUser.groups
-  
+  groups = ["56548159eb7d5b97dcafcf7e", "565AJHFDGJH9eb7d5bafcf7e", 1,3, 5, "finn", "adam"]
+  console.log("groups before overidding values", groups)
+  for(var i=0; i< groups.length; i++){
+    // http://localhost:3000/groups?ids=hj123b4jh32b4j3h24,b234k3b4jh2b234h,jk32h4kj32h4k3j2h4,23j4hl23h4kj32h4j23l
+    //using the key (groups[i]) which will return the id for a specific group
+    // we need to make an ajax call to the server to get the group data
+    // once the ajax call returns the data, we have an object for a group instead of just an id
+    // we need to replace the id in the array groups by the object corresponding to this id
+    groups[i] = data // this is a fake object just for the purpose of the demo
+  }
+  console.log("groups after overidding values", groups)
+
+  currentUser.groups = groups
+
+
+
+window.getUsersGroups = getUsersGroups;
   // groups.populate('groups');
   console.log(groups);
   // return ajaxRequest("get", "http://localhost:3000/api/groups", null, showUsersGroups)
@@ -79,7 +95,7 @@ function submitGroupForm(){
     ajaxRequest(method, url, data, shoveGroupIdIntoUser);
     console.log(data);
     console.log(currentUser.groups);
-    currentUser.groups.push(data._id);
+    // currentUser.groups.push(data._id);
     console.log(currentUser.groups);
 }
 
