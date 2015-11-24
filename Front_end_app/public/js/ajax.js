@@ -9,6 +9,12 @@ function checkIfAdmin(){
 }
 
 function checkLoginState(){
+  if (getToken()) {
+    return loggedInState();
+  } else {
+    return loggedOutState();
+  }
+}
 //check a token to confirm logged in or out
 }
 
