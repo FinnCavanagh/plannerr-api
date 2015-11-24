@@ -27,7 +27,9 @@ function groupsCreate(req, res){
     if(err) return res.render('error', {message: 'Could not create group ' + (err) });
     res.status(201).json({ group: group });
   });
-}
+
+};
+
 
 function groupsUpdate(req, res){
   Group.findById(req.params.id,  function(err, group) {

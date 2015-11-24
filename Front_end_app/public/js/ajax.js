@@ -41,9 +41,15 @@ function loggedOutState(){
 //set view for logged out
 }
 
+function onGroupCreate(){
+  ajaxRequest("POST", 'http://localhost:3000/api/groups', data, authenticationSuccessful);
+}
+
 function getUsersGroups(){
   console.log("getUsersGroups user is ", currentUser)
   groups = currentUser.groups
+  
+  // groups.populate('groups');
   console.log(groups);
   // return ajaxRequest("get", "http://localhost:3000/api/groups", null, showUsersGroups)
 
