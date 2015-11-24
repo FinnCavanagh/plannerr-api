@@ -74,6 +74,7 @@ function displayErrors(data){
 
 function authenticationSuccessful(data) {
 //set the token
+
 }
 
 function setRequestHeader(xhr, settings) {
