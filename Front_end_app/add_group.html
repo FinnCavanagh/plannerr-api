@@ -3,8 +3,11 @@
 <head>
   <title></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <script src="//connect.facebook.net/en_US/sdk.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./public/js/ajax.js"></script>
+  <script type="text/javascript" src="./public/js/main.js"></script>
   <script>
     $(document).ready(function() {
       $('select').material_select();
@@ -18,7 +21,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <form class="col s6">
+      <form class="col s6" method="post" action="/groups">
         <div class="row">
           <div class="input-field col s12">
             <input name="name" id="first_name" type="text" class="validate">
@@ -55,8 +58,14 @@
             </select>
             <label>Materialize Multiple Select</label>
           </div>
+<!--           <div class="input-field col s12">
+            <select name="admin_users" id="admin_users" type="text" class="validate">
+              <option selected="selected"><script type="text/javascript">currentUser._id</script></option>
+            </select>
+          </div> -->
           <div class="input-field col s12">
-            <a class="waves-effect waves-light btn col s12">Add Event</a>
+            <!-- <a class="waves-effect waves-light btn col s12" type="submit">Add Event</a> -->
+            <button type="submit" class="waves-effect waves-light btn col s12" name="action">Add Event</button>
           </div>
         </div>
       </form>

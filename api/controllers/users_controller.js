@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Group = require('../models/group');
 
 function usersIndex(req, res){
   User.find(function(err, users){
@@ -9,7 +10,10 @@ function usersIndex(req, res){
 function usersShow(req, res){
   User.findById(req.params.id, function(err, user){
     if (err) return res.status(404).json({message: 'Something went wrong.'});
-    res.status(200).json({ user: user });
+    Group.find({ users: [req.params.id] }).populate('admin_user', 'first_name last_name').select('-users').exec(function(err, groups) {
+      if (err) return res.status(404).json({message: 'Something went wrong.'});
+      res.status(200).json({ user: user, groups: groups });
+    });
   });
 }
 
