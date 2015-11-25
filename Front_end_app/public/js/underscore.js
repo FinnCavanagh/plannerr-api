@@ -21,7 +21,7 @@ $(function(){
     })
   }
 
-  // Views.render("/templates/layout.html", null, "body");
+  Views.render("/templates/layout.html", null, "body");
 
 
 
