@@ -20,8 +20,8 @@ function groupsCreate(req, res){
     activity_duration: req.body.activity_duration,
     decision_expiry_time: req.body.decision_expiry_time,
     image: req.body.image,
-    admin_users: req.body.admin_users,
-    users: req.body.users
+    admin_user: req.user.id,
+    users: [req.user.id]
   });
   group.save(function(err){
     if(err) return res.render('error', {message: 'Could not create group ' + (err) });
@@ -35,12 +35,15 @@ function groupsUpdate(req, res){
     if (err) return res.status(500).json({message: "Something went wrong!"});
     if (!group) return res.status(404).json({message: 'No group found.'});
 
+    console.log("REQ USERS",req.body.users);
+
     if (req.body.name) group.name = req.body.name;
     if (req.body.activity_duration) group.activity_duration = req.body.activity_duration;
     if (req.body.users) group.users = req.body.users;
-    if (req.body.admin_users) group.admin_users = req.body.admin_users;
+    if (req.body.admin_user) group.admin_user = req.body.admin_user;
 
-    group.save(function(err) {
+    group.save(function(err, group) {
+      console.log(err);
      if (err) return res.status(500).json({message: "Something went wrong!"});
 
       res.status(201).json({message: 'Group successfully updated.', group: group});

@@ -8,8 +8,7 @@ var userSchema = new mongoose.Schema({
   last_name: String,
   email: String,
   profile_picture: String,
-  header_image: String,
-  groups: [{type: mongoose.Schema.ObjectId, ref: 'Group'}]
+  header_image: String
 });
 
 module.exports = mongoose.model("User", userSchema);

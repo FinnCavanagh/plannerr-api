@@ -3,7 +3,7 @@ $(init);
 var currentUser = null;
 
 function init(){
-  console.log(localStorage);
+
   $("form").on("submit", submitGroupForm);
 
 
@@ -31,7 +31,7 @@ function loggedInState(){
   $('.nav-wrapper img').attr('src', profile_picture);
   // getUsersGroups();
   ///THIS IS IMPORTANT 4 GERRY
-
+  console.log(currentUser);
   // var currentUser = 
 
 //set view for logged in
@@ -47,32 +47,35 @@ function onGroupCreate(){
   ajaxRequest("POST", 'http://localhost:3000/api/groups', data, authenticationSuccessful);
 }
 
-function getUsersGroups(){
-  console.log("getUsersGroups user is ", currentUser)
-  groups = currentUser.groups
-  groups = ["56548159eb7d5b97dcafcf7e", "565AJHFDGJH9eb7d5bafcf7e", 1,3, 5, "finn", "adam"]
-  console.log("groups before overidding values", groups)
-  for(var i=0; i< groups.length; i++){
-    // 1.http://localhost:3000/groups?ids=hj123b4jh32b4j3h24,b234k3b4jh2b234h,jk32h4kj32h4k3j2h4,23j4hl23h4kj32h4j23l
-    //2.using the key (groups[i]) which will return the id for a specific group
-    // we need to make an ajax call to the server to get the group data
-    // once the ajax call returns the data, we have an object for a group instead of just an id
-    // we need to replace the id in the array groups by the object corresponding to this id
-    groups[i] = data
-  }
-  console.log("groups after overidding values", groups)
+// function getUsersGroups(){
+//   console.log("getUsersGroups user is ", currentUser)
+//   groups = currentUser.groups
+//   groups = ["56548159eb7d5b97dcafcf7e", "565AJHFDGJH9eb7d5bafcf7e", 1,3, 5, "finn", "adam"]
+//   console.log("groups before overidding values", groups)
+//   for(var i=0; i< groups.length; i++){
 
-  currentUser.groups = groups
+//     // ajaxRequest("get", "http://localhost:3000/api/users/" + currentUser._id, data.group, );
+
+//     // 1.http://localhost:3000/groups?ids=hj123b4jh32b4j3h24,b234k3b4jh2b234h,jk32h4kj32h4k3j2h4,23j4hl23h4kj32h4j23l
+//     //2.using the key (groups[i]) which will return the id for a specific group
+//     // we need to make an ajax call to the server to get the group data
+//     // once the ajax call returns the data, we have an object for a group instead of just an id
+//     // we need to replace the id in the array groups by the object corresponding to this id
+//     groups[i] = data
+//   }
+//   console.log("groups after overidding values", groups)
+
+//   currentUser.groups = groups
 
 
-  ///THIS IS IMPORTANT 4 GERRY
-// window.getUsersGroups = getUsersGroups;
-  // groups.populate('groups');
-  console.log(groups);
-  // return ajaxRequest("get", "http://localhost:3000/api/groups", null, showUsersGroups)
+//   ///THIS IS IMPORTANT 4 GERRY
+// // window.getUsersGroups = getUsersGroups;
+//   // groups.populate('groups');
+//   console.log(groups);
+//   // return ajaxRequest("get", "http://localhost:3000/api/groups", null, showUsersGroups)
 
-//get users current groups
-}
+// //get users current groups
+// }
 
 function showUsersGroups(data) {
   console.log("users group")
@@ -93,18 +96,11 @@ function submitGroupForm(){
 
 
 
-    ajaxRequest(method, url, data, shoveGroupIdIntoUser);
+    ajaxRequest(method, url, data, displayCurrentGroup);
     // console.log(data);
     // console.log(currentUser.groups);
     // // currentUser.groups.push(data._id);
     // console.log(currentUser.groups);
-}
-
-function shoveGroupIdIntoUser(data){
-console.log("I am in shoveGroup so on so forth", data);
-console.log(currentUser.groups);
-currentUser.groups.push(data);
-console.log(currentUser.groups);
 }
 
 function submitActivityForm(){
@@ -143,7 +139,9 @@ function getCurrentGroup(){
 
 
 function displayCurrentGroup(data){
+  
   //display group info
+  console.log(data)
   getActivities()
 }
 

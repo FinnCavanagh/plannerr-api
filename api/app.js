@@ -19,6 +19,8 @@ var User           = require('./models/user');
 var Group          = require('./models/group');
 var Activity       = require('./models/activity');
 
+var secret = process.env.PLANNERR_JWT_SECRET;
+
 //This will connect to the db when we figure out the location
 mongoose.connect('mongodb://localhost:27017/plannerr-app');
 
@@ -42,13 +44,10 @@ app.use(passport.initialize());
 app.use(cors());
 
 //do we need this to have secrets?
-// app.use('/api', expressJWT({ secret: secret })
-//   .unless({
-//     path: [
-//       { url: '/api/auth/facebook', methods: ['POST'] },
-//       { url: '/api/', methods: ['POST'] },
-//     ]
-//   }));
+app.use('/api', expressJWT({ secret: secret })
+  .unless({
+    path: [{ url: '/api/auth/facebook', methods: ['POST'] }]
+  }));
 //this will require the routes when they exist, enabling this will result in a callback error
 var routes = require('./config/routes');
 app.use("/api", routes);

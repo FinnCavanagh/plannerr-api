@@ -21,7 +21,7 @@ function facebook(req, res) {
         user.profile_picture = req.body.profile_picture;
         user.save(function(err, user) {
           if(err) return res.status(500).json({ message: err });
-          var token = jwt.sign({user_id: user.facebook_id, first_name: user.first_name, last_name: user.last_name}, secret, 24*60*60);
+          var token = jwt.sign({id: user._id, first_name: user.first_name, last_name: user.last_name}, secret, 24*60*60);
           return res.status(200).json({token: token, user: user});
         });
       } else {
@@ -37,7 +37,7 @@ function facebook(req, res) {
         user.save(function(err, user) {
           if(err) return res.status(500).json({ message: err });
           console.log("user saved");
-          var token = jwt.sign({user_id: user.facebook_id, first_name: user.first_name, last_name: user.last_name}, secret, 24*60*60);
+          var token = jwt.sign({id: user._id, first_name: user.first_name, last_name: user.last_name}, secret, 24*60*60);
           return res.status(200).json({token: token, user: user});
         });
       }
