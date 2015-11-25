@@ -1,4 +1,3 @@
-
 $(function(){
 
   // Facebook login
@@ -13,6 +12,9 @@ $(function(){
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.2' // use version 2.2
   });
+
+  // 
+  initAutocomplete();
 
   function checkLoginStatus(res) {
     if(res.status === 'connected') {
@@ -72,7 +74,45 @@ $(function(){
   });
   // end frontend login for facebook
 
+  //////////////////////////
+  // Google Maps Function //
+  //////////////////////////
+
+
+  // This example adds a search box to a map, using the Google Place Autocomplete
+  // feature. People can enter geographical searches. The search box will return a
+  // pick list containing a mix of places and predicted search terms.
+
+  function initAutocomplete() {
+
+   // Create the search box and link it to the UI element.
+   var $input = $('#pac-input');
+   var searchBox = new google.maps.places.SearchBox($input[0]);
+   var $name = $('input[name=name]');
+   var $address = $('input[name=address]');
+   var $rating = $('input[name=rating]');
+   var $lat = $('input[name=lat]');
+   var $lng = $('input[name=lng]');
+   var $form = $('form');
+
+   var markers = [];
+  
+   searchBox.addListener('places_changed', function() {
+     var places = searchBox.getPlaces();
+     $input.val(places[0].name + ", " + places[0].formatted_address);
+
+     $name.val(places[0].name);
+     $address.val(places[0].formatted_address);
+     $rating.val(places[0].rating);
+     $lat.val(places[0].geometry.location.lat());
+     $lng.val(places[0].geometry.location.lng());
+
+     console.log($form.serialize());
+   });
+  }
+
 });
+
 
 
 
