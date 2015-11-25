@@ -3,26 +3,42 @@
 <head>
   <title></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <!-- facebook sdk -->
+  <script src="//connect.facebook.net/en_US/sdk.js"></script>
+  <!-- JQUery CDN link from google -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Compiled and minified JavaScript for Materialize-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+  
+
+  <script type="text/javascript" src="./public/js/ajax.js"></script>
+  <script type="text/javascript" src="./public/js/main.js"></script>
+  <!-- Google Maps Api -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVyDfqZocoTDcoot0M5R9oB6FU2pUfJCo&signed_in=true&libraries=places"></script>
 </head>
 <body>
   <div class="container">
     <div class="row">
-        <form class="col s6">
+        <form class="col s6" method="post" id="activity_form" action="/activities">
+          <input type="hidden" name="name">
+          <input type="hidden" name="address">
+          <input type="hidden" name="rating">
+          <input type="hidden" name="lat">
+          <input type="hidden" name="lng">
           <div class="row">
             <div class="input-field col s12">
-              <input placeholder="" id="" type="text" class="validate">
-              <label for="">Add Google Place</label>
+              <input id="pac-input" class="controls" type="text" class="validate" placeholder="">
+              <label for="Add Google Place">Add Google Place</label>
             </div>
             <div class="col s12">
               <p>or</p>
             </div>
             <div class="input-field col s12">
-              <input id="" type="text" class="validate">
+              <input id="" type="text" class="validate" placeholder="">
               <label for="">Activity Name</label>
             </div>
             <div class="input-field col s12">
-              <input id="" type="text" class="validate">
+              <input id="" type="text" class="validate" placeholder="">
               <label for="">Activity Description</label>
             </div>
             <div class="input-field col s12">
