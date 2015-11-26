@@ -137,6 +137,16 @@ h4 {
  margin: 0 auto;
 }
 
+.timelimit {
+  position: relative;
+  margin: 5px;
+  color: #303030 ;
+  background-color: #F8F8F8;
+  width: 100px;
+  height: 50px; 
+  margin: 0 auto;
+}
+
 .mappinpoint {
   height: 260px;
   width: 260px;
@@ -177,6 +187,7 @@ input[type=submit]:hover {
 input[type=submit]:active {
   background: #116611;
 }
+
 
 
 
