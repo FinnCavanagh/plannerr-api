@@ -3,11 +3,15 @@ $(init);
 var currentUser = null;
 
 function init(){
-  $("form").on("submit", submitGroupForm);
+  $("#container").on("submit", ".submit-group-form", submitGroupForm);
+  $(".add-new-group").on("click", newGroupForm);
+  $(".view-profile-page").on("click", renderUserProfileView);
+}
 
-
-// checkLoginState(); 
-//functions to trigger on initialize
+function renderUserProfileView(){
+  event.preventDefault();
+  console.log("rendering view profile");
+  Views.render("/templates/user_page.html", null, "#container");
 }
 
 function checkIfAdmin(){
@@ -28,6 +32,7 @@ function loggedInState(){
   console.log("you logged in");
   var profile_picture = localStorage.getItem("profile_picture");
   $('.nav-wrapper img').attr('src', profile_picture);
+
   // getUsersGroups();
   ///THIS IS IMPORTANT 4 GERRY
   console.log(currentUser);
@@ -41,8 +46,13 @@ function loggedOutState(){
 
 //set view for logged out
 }
+function newGroupForm(){
+  event.preventDefault();
+  Views.render("/templates/add_group.html", null, "#container");
+}
 
 function onGroupCreate(){
+  event.preventDefault();
   ajaxRequest("POST", 'http://localhost:3000/api/groups', data, authenticationSuccessful);
 }
 
@@ -88,7 +98,7 @@ function showUsersGroups(data) {
 
 function submitGroupForm(){
     event.preventDefault();
-
+    console.log("here please");
     var method = $(this).attr("method");
     var url    = "http://localhost:3000/api" + $(this).attr("action");
     var data   = $(this).serialize();

@@ -40,6 +40,7 @@ $(function(){
       });
       $('.fb-logout').removeClass('hidden');
       $('.fb-login').addClass('hidden');
+      renderUserProfileView()
     }
     else {
 
@@ -47,6 +48,8 @@ $(function(){
       removeToken();
       $('.fb-logout').addClass('hidden');
       $('.fb-login').removeClass('hidden');
+      $("#container").html("");
+
     }
 
   }
