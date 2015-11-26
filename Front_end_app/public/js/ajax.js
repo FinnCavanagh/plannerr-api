@@ -4,11 +4,12 @@ var currentUser = null;
 
 function init(){
   $("form").on("submit", submitGroupForm);
-
+  $(".add-new-group").on("click", newGroupForm);
 }
 
 
-function renderView(){
+function renderUserProfileView(){
+  event.preventDefault();
   console.log("rendering view profile");
   Views.render("/templates/user_page.html", null, "#container");
 }
@@ -45,8 +46,13 @@ function loggedOutState(){
 
 //set view for logged out
 }
+function newGroupForm(){
+  event.preventDefault();
+  Views.render("/templates/add_group.html", null, "#container");
+}
 
 function onGroupCreate(){
+  event.preventDefault();
   ajaxRequest("POST", 'http://localhost:3000/api/groups', data, authenticationSuccessful);
 }
 
