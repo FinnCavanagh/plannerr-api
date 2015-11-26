@@ -3,11 +3,10 @@ $(init);
 var currentUser = null;
 
 function init(){
-  $("form").on("submit", submitGroupForm);
+  $("#container").on("submit", ".submit-group-form", submitGroupForm);
   $(".add-new-group").on("click", newGroupForm);
   $(".view-profile-page").on("click", renderUserProfileView);
 }
-
 
 function renderUserProfileView(){
   event.preventDefault();
@@ -99,7 +98,7 @@ function showUsersGroups(data) {
 
 function submitGroupForm(){
     event.preventDefault();
-
+    console.log("here please");
     var method = $(this).attr("method");
     var url    = "http://localhost:3000/api" + $(this).attr("action");
     var data   = $(this).serialize();
