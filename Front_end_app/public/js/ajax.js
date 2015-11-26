@@ -3,7 +3,6 @@ $(init);
 var currentUser = null;
 
 function init(){
-
   $("form").on("submit", submitGroupForm);
 
 
