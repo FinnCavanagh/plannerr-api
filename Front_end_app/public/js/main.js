@@ -1,9 +1,7 @@
 $(function(){
-
   // Facebook login
   var $fbLogin = $('.fb-login');
   var $fbLogout = $('.fb-logout');
-
   // initialize facebook 
   FB.init({
     appId      : '1389788894661209', //process.env.PLANNERR_FACEBOOK_API_KEY,
@@ -12,6 +10,7 @@ $(function(){
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.2' // use version 2.2
   });
+
 
   function checkLoginStatus(res) {
     console.log(res)
@@ -70,6 +69,14 @@ $(function(){
       checkLoginStatus(res);
     });
   });
+
+  // init side nav
+  $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 240
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    }
+  );
   // end frontend login for facebook
 
   //////////////////////////
@@ -83,32 +90,20 @@ $(function(){
 
   function initAutocomplete() {
 
-   // Create the search box and link it to the UI element.
-   var $input = $('#pac-input');
-   var searchBox = new google.maps.places.SearchBox($input[0]);
-   var $name = $('input[name=name]');
-   var $address = $('input[name=address]');
-   var $rating = $('input[name=rating]');
-   var $lat = $('input[name=lat]');
-   var $lng = $('input[name=lng]');
-   var $form = $('form');
+    // Create the search box and link it to the UI element.
+    var $input = $('#pac-input');
+    var searchBox = new google.maps.places.SearchBox($input[0]);
+    var $placeId = $('input[name=place_id]');
 
-   var markers = [];
-  
-   searchBox.addListener('places_changed', function() {
-     var places = searchBox.getPlaces();
-     $input.val(places[0].name + ", " + places[0].formatted_address);
+    var markers = [];
 
-     $name.val(places[0].name);
-     $address.val(places[0].formatted_address);
-     $rating.val(places[0].rating);
-     $lat.val(places[0].geometry.location.lat());
-     $lng.val(places[0].geometry.location.lng());
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+      $input.val(places[0].name + ", " + places[0].formatted_address);
 
-     console.log($form.serialize());
-   });
+      $placeId.val(places[0].id);
+    });
   }
-
 });
 
 

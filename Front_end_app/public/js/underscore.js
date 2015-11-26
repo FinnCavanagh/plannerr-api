@@ -2,6 +2,7 @@ $(function(){
   var Views = Views || {}
   window.Views = Views
   Views.render = function(path, data, selector){
+    console.log("HERE");
     $.ajax({url: path}).done(function(stringTemplate){
       var underscoreTemplate = _.template(stringTemplate);
       compiledTemplate = underscoreTemplate(data);
@@ -22,16 +23,4 @@ $(function(){
   }
 
   // Views.render("/templates/layout.html", null, "body");
-
-
-
-
-
-
-
-
-
-
-
-
 });
