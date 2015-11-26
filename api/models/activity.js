@@ -7,8 +7,7 @@ var activitySchema = new mongoose.Schema({
   pitch: String,
   image: String,
   place_id: String,
-  votes_count: Number,
-  users_voted: [{ user_id : mongoose.Schema.Types.ObjectId , type: Number }],
+  users_voted: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
   url: String,
   user_id: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
 });

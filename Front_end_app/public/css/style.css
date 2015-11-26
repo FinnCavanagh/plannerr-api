@@ -96,4 +96,93 @@ margin-right: 11%;
 }
 
 
+/*added for activity page by ben*/
+
+.collapsible {
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  border: 20px;
+}
+
+.venuechoicepic {
+  height: 260px;
+  width: 260px;
+  background-color: #F8F8F8;
+  margin: 0 auto;
+  border-radius: 1%;
+/*  margin: 20px;*/
+}
+
+.middle {
+  margin: 0 auto;
+}
+
+h4 {
+  text-align: center;
+  color: #2ecc71;
+}
+
+.activitytile {
+ position: relative;
+ margin: 5px;
+ color: #303030 ;
+ background-color: #F8F8F8;
+ border-color: 303030;
+ border-radius: 50%;
+ width: 50px;
+ height: 50px; 
+ margin: 0 auto;
+}
+
+.timelimit {
+  position: relative;
+  margin: 5px;
+  color: #303030 ;
+  background-color: #F8F8F8;
+  width: 100px;
+  height: 50px; 
+  margin: 0 auto;
+}
+
+.mappinpoint {
+  height: 260px;
+  width: 260px;
+  background-color: #F8F8F8;
+  margin: 0 auto;
+  border-radius: 1%;
+/*  margin: 20px;*/
+}
+
+.collapsible-header {
+  color: #2ecc71;
+}
+
+
+/*buttons on activity page*/
+#buttonContainer {
+  text-align: center;
+}
+
+input[type=submit], button {
+  border: 1px solid #2ecc71;
+  border-radius: 5px;
+  padding: 5px 15px;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 450;
+  width: 130px;
+  color: #2ecc71;
+
+}
+
+input[type=submit]:hover {
+  background: #2ecc71;
+  color: #FFF;
+}
+
+input[type=submit]:active {
+  background: #116611;
+}
 
