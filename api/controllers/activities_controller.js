@@ -22,7 +22,7 @@ function activitiesCreate(req, res){
     image: req.body.image,
     place_id: req.body.place_id,
     url: req.body.url,
-    user_id: req.body.user_id
+    user: req.user.id
     //We will set the user id using ajax
   });
   activity.save(function(err){

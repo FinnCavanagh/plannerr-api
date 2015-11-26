@@ -3,15 +3,11 @@ $(init);
 var currentUser = null;
 
 function init(){
-  $("#container").on("submit", ".submit-group-form", submitGroupForm);
-  $(".add-new-group").on("click", newGroupForm);
-  $(".view-profile-page").on("click", renderUserProfileView);
-}
+  $("form").on("submit", submitGroupForm);
 
-function renderUserProfileView(){
-  event.preventDefault();
-  console.log("rendering view profile");
-  Views.render("/templates/user_page.html", null, "#container");
+
+// checkLoginState(); 
+//functions to trigger on initialize
 }
 
 function checkIfAdmin(){
@@ -32,7 +28,6 @@ function loggedInState(){
   console.log("you logged in");
   var profile_picture = localStorage.getItem("profile_picture");
   $('.nav-wrapper img').attr('src', profile_picture);
-
   // getUsersGroups();
   ///THIS IS IMPORTANT 4 GERRY
   console.log(currentUser);
@@ -46,13 +41,8 @@ function loggedOutState(){
 
 //set view for logged out
 }
-function newGroupForm(){
-  event.preventDefault();
-  Views.render("/templates/add_group.html", null, "#container");
-}
 
 function onGroupCreate(){
-  event.preventDefault();
   ajaxRequest("POST", 'http://localhost:3000/api/groups', data, authenticationSuccessful);
 }
 
@@ -98,7 +88,7 @@ function showUsersGroups(data) {
 
 function submitGroupForm(){
     event.preventDefault();
-    console.log("here please");
+
     var method = $(this).attr("method");
     var url    = "http://localhost:3000/api" + $(this).attr("action");
     var data   = $(this).serialize();
@@ -159,6 +149,20 @@ function voteOnActivity(){
 //click once for vote, twice to cancel
 }
 
+
+function voting (data) {
+  $(document.body).on('click', function(e));
+ console.log ("finn is logging", activity._id);
+};
+
+$("form").on("submit", submitGroupForm);
+
+//on click, update activity_id and user_id
+
+//   event.preventDefault();
+//   users_voted: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
+// user_id: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
+
 function commentOn(){
 //add comment to activity
 }
@@ -202,6 +206,7 @@ function removeToken() {
   localStorage.clear();
 }
 
+
 function ajaxRequest(method, url, data, callback) {
   return $.ajax({
     method: method,
@@ -215,3 +220,18 @@ function ajaxRequest(method, url, data, callback) {
     displayErrors(data.responseJSON.message);
   });
 }
+
+
+
+
+// $voting.on('click', function() {
+//   event.preventDefault();
+
+//   users_voted: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
+// user_id: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
+//make a button, on click, make a request to update the activity and add user.id (current) into the users-voted attribute of the activity model 
+//create a html element, to display / show the length of the collection users-voted
+//tick is a click event, changes when clicked
+//counter is there when the page reloads - always
+
+
