@@ -40,6 +40,7 @@ $(function(){
       });
       $('.fb-logout').removeClass('hidden');
       $('.fb-login').addClass('hidden');
+      renderView()
     }
     else {
 

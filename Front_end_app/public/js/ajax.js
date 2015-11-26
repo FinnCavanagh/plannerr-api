@@ -5,9 +5,12 @@ var currentUser = null;
 function init(){
   $("form").on("submit", submitGroupForm);
 
+}
 
-// checkLoginState(); 
-//functions to trigger on initialize
+
+function renderView(){
+  console.log("rendering view profile");
+  Views.render("/templates/user_page.html", null, "#container");
 }
 
 function checkIfAdmin(){
@@ -28,6 +31,7 @@ function loggedInState(){
   console.log("you logged in");
   var profile_picture = localStorage.getItem("profile_picture");
   $('.nav-wrapper img').attr('src', profile_picture);
+
   // getUsersGroups();
   ///THIS IS IMPORTANT 4 GERRY
   console.log(currentUser);
