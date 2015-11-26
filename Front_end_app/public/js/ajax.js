@@ -6,6 +6,10 @@ function init(){
   $("#container").on("submit", ".submit-group-form", submitGroupForm);
   $(".add-new-group").on("click", newGroupForm);
   $(".view-profile-page").on("click", renderUserProfileView);
+  // Gareth Adding activity render
+  $("#container").on("click", ".add-activity", newActivityForm);
+  // End Gareth Adding Activity render
+
 }
 
 function renderUserProfileView(){
@@ -46,6 +50,13 @@ function loggedOutState(){
 
 //set view for logged out
 }
+
+// gareth added newActivityForm function
+function newActivityForm(){
+  event.preventDefault();
+  Views.render("/templates/add_activity.html", null, "#container");
+}
+
 function newGroupForm(){
   event.preventDefault();
   Views.render("/templates/add_group.html", null, "#container");
@@ -113,6 +124,8 @@ function submitGroupForm(){
 }
 
 function submitActivityForm(){
+  event.preventDefault();
+  console.log("logging button click for activity");
 
 }
 
