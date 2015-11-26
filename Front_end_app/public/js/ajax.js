@@ -5,6 +5,7 @@ var currentUser = null;
 function init(){
   $("form").on("submit", submitGroupForm);
   $(".add-new-group").on("click", newGroupForm);
+  $(".view-profile-page").on("click", renderUserProfileView);
 }
 
 
