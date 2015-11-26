@@ -3,20 +3,15 @@ $(init);
 var currentUser = null;
 
 function init(){
+
   $("#container").on("submit", ".submit-group-form", submitGroupForm);
   $(".add-new-group").on("click", newGroupForm);
   $(".view-profile-page").on("click", renderUserProfileView);
   // Gareth Adding activity render
   $("#container").on("click", ".add-activity", newActivityForm);
   // End Gareth Adding Activity render
-
 }
 
-function renderUserProfileView(){
-  event.preventDefault();
-  console.log("rendering view profile");
-  Views.render("/templates/user_page.html", null, "#container");
-}
 
 function checkIfAdmin(){
 //checks to see if  a user is admin
@@ -36,7 +31,6 @@ function loggedInState(){
   console.log("you logged in");
   var profile_picture = localStorage.getItem("profile_picture");
   $('.nav-wrapper img').attr('src', profile_picture);
-
   // getUsersGroups();
   ///THIS IS IMPORTANT 4 GERRY
   console.log(currentUser);
@@ -47,9 +41,8 @@ function loggedInState(){
 
 function loggedOutState(){
   console.log("logged out")
-
-//set view for logged out
 }
+
 
 // gareth added newActivityForm function
 function newActivityForm(){
@@ -63,44 +56,13 @@ function newGroupForm(){
 }
 
 function onGroupCreate(){
-  event.preventDefault();
   ajaxRequest("POST", 'http://localhost:3000/api/groups', data, authenticationSuccessful);
 }
 
-// function getUsersGroups(){
-//   console.log("getUsersGroups user is ", currentUser)
-//   groups = currentUser.groups
-//   groups = ["56548159eb7d5b97dcafcf7e", "565AJHFDGJH9eb7d5bafcf7e", 1,3, 5, "finn", "adam"]
-//   console.log("groups before overidding values", groups)
-//   for(var i=0; i< groups.length; i++){
-
-//     // ajaxRequest("get", "http://localhost:3000/api/users/" + currentUser._id, data.group, );
-
-//     // 1.http://localhost:3000/groups?ids=hj123b4jh32b4j3h24,b234k3b4jh2b234h,jk32h4kj32h4k3j2h4,23j4hl23h4kj32h4j23l
-//     //2.using the key (groups[i]) which will return the id for a specific group
-//     // we need to make an ajax call to the server to get the group data
-//     // once the ajax call returns the data, we have an object for a group instead of just an id
-//     // we need to replace the id in the array groups by the object corresponding to this id
-//     groups[i] = data
-//   }
-//   console.log("groups after overidding values", groups)
-
-//   currentUser.groups = groups
-
-
-//   ///THIS IS IMPORTANT 4 GERRY
-// // window.getUsersGroups = getUsersGroups;
-//   // groups.populate('groups');
-//   console.log(groups);
-//   // return ajaxRequest("get", "http://localhost:3000/api/groups", null, showUsersGroups)
-
-// //get users current groups
-// }
 
 function showUsersGroups(data) {
   console.log("users group")
-
-  //chuck in the activity and profile stuff
+   //chuck in the activity and profile stuff
   // return $.each(data.groups, function(index, group){
   //   $.groups
   // })
@@ -109,7 +71,7 @@ function showUsersGroups(data) {
 
 function submitGroupForm(){
     event.preventDefault();
-    console.log("here please");
+
     var method = $(this).attr("method");
     var url    = "http://localhost:3000/api" + $(this).attr("action");
     var data   = $(this).serialize();
@@ -172,6 +134,19 @@ function voteOnActivity(){
 //click once for vote, twice to cancel
 }
 
+
+// function voting (data) {
+//   $(document.body).on('click', function(e));
+//  console.log ("finn is logging", activity._id);
+// };
+
+
+//on click, update activity_id and user_id
+
+//   event.preventDefault();
+//   users_voted: [{ user_id : mongoose.Schema.Types.ObjectId , type: String }],
+// user_id: [{type: mongoose.Schema.ObjectId, ref: 'User'}]
+
 function commentOn(){
 //add comment to activity
 }
@@ -215,6 +190,7 @@ function removeToken() {
   localStorage.clear();
 }
 
+
 function ajaxRequest(method, url, data, callback) {
   return $.ajax({
     method: method,
@@ -228,3 +204,12 @@ function ajaxRequest(method, url, data, callback) {
     displayErrors(data.responseJSON.message);
   });
 }
+
+
+
+//make a button, on click, make a request to update the activity and add user.id (current) into the users-voted attribute of the activity model 
+//create a html element, to display / show the length of the collection users-voted
+//tick is a click event, changes when clicked
+//counter is there when the page reloads - always
+
+
