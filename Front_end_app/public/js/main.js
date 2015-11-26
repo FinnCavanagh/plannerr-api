@@ -13,10 +13,8 @@ $(function(){
     version    : 'v2.2' // use version 2.2
   });
 
-  // 
-  initAutocomplete();
-
   function checkLoginStatus(res) {
+    console.log(res)
     if(res.status === 'connected') {
         
       var access_token = res.authResponse.accessToken;
